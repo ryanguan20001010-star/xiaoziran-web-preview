@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="theme-color" content="#F4F1E9" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta
+      name="description"
+      content="小自然核心页面蓝图 v0.2 交互概念原型；外部图片仅作为摄影参考。"
+    />
+    <link rel="icon" href="data:," />
+    <title>小自然｜核心页面蓝图 v0.2 · Web Preview 0.1.0</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <div class="kicker">XIAOZIRAN / PRODUCT DESIGN · 04</div>
+        <h1>
+          核心页面蓝图 <span style="font: 500 14px var(--sans); color: var(--muted)">v0.2</span>
+        </h1>
+        <p class="sub">结构修订：摄影主导 · 文字减量 · 核心任务清晰 · 微信小程序实现边界可见</p>
+      </div>
+      <div class="top-actions">
+        <span class="status-pill">概念原型 / 非生产系统</span
+        ><button class="mode-btn" data-action="tabmode-3">方案 A · 3 Tab</button
+        ><button class="mode-btn active" data-action="tabmode-4">方案 B · 4 Tab</button>
+      </div>
+    </header>
+    <main class="workspace">
+      <aside class="panel navpanel">
+        <div class="eyebrow">Blueprint index</div>
+        <h2>七个核心页面</h2>
+        <nav class="navlist" id="navlist">
+          <button class="navbtn active" data-screen="home">
+            <span class="num">04-01</span>首页</button
+          ><button class="navbtn" data-screen="rooms"><span class="num">04-02</span>房型列表</button
+          ><button class="navbtn" data-screen="detail">
+            <span class="num">04-03</span>房型详情</button
+          ><button class="navbtn" data-screen="booking">
+            <span class="num">04-04</span>预订确认</button
+          ><button class="navbtn" data-screen="explore">
+            <span class="num">04-05</span>在小自然</button
+          ><button class="navbtn" data-screen="stay"><span class="num">04-06</span>我的入住</button
+          ><button class="navbtn" data-screen="account"><span class="num">04-07</span>我的</button>
+        </nav>
+        <div class="rulebox">
+          <div class="eyebrow">Current test</div>
+          <p><b>方案 B：4 Tab（工作假设）</b><br />首页 / 住宿 / 在小自然 / 我的</p>
+          <p>让住宿浏览直接可达；「我的入住」仍由订单/入住状态进入，不另设一级 Tab。</p>
+          <span class="pill green">建议优先测试</span><span class="pill">未冻结</span>
+        </div>
+        <div class="rulebox">
+          <div class="eyebrow">Interactions</div>
+          <p>
+            切换 7 页、比较 3/4
+            Tab、打开日期/人数面板、增减人数、查看更多服务、切换出发前/入住中、展开政策说明。
+          </p>
+        </div>
+      </aside>
+      <section class="phone-wrap">
+        <div class="phone">
+          <div class="statusbar"><span>9:41</span><span class="status-icons">● ● ●　▰</span></div>
+          <div class="appbar">
+            <div>
+              <div class="wordmark">小自然</div>
+              <div class="wordmark-note">SEASONAL LIVING · LOGO 原件待替换</div>
+            </div>
+            <button class="appbar-action" data-action="services">联系服务 ↗</button>
+          </div>
+          <div class="screen" id="screen" aria-live="polite"></div>
+          <div class="bottom-tabs" id="tabs" data-count="4"></div>
+          <div
+            class="overlay"
+            id="overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="操作面板"
+          ></div>
+          <div class="toast" id="toast" role="status"></div>
+        </div>
+      </section>
+      <aside class="inspector">
+        <section class="panel">
+          <div class="eyebrow">Design intent</div>
+          <h2 id="ititle">04-01 / 首页</h2>
+          <p id="ilead">先用真实摄影建立感受，再用一个清楚的入口开始住宿任务。</p>
+          <div class="statrow">
+            <div class="stat"><strong id="s1">01</strong><span>主任务</span></div>
+            <div class="stat"><strong id="s2">04</strong><span>快捷入口上限</span></div>
+            <div class="stat"><strong>v0.2</strong><span>蓝图版本</span></div>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="eyebrow">Page structure</div>
+          <h2>当前页面模块</h2>
+          <ul id="modules">
+            <li>大面积摄影 Hero</li>
+            <li>一个住宿主操作</li>
+            <li>低干扰 Service Dock</li>
+            <li>少量精选体验内容</li>
+          </ul>
+        </section>
+        <section class="panel">
+          <div class="eyebrow">Journey</div>
+          <h2>核心任务流</h2>
+          <p id="iflow">首页 → 日期/人数 → 房型列表 → 房型详情 → 预订确认</p>
+          <div>
+            <span class="tagline">真实内容</span><span class="tagline">清晰选择</span
+            ><span class="tagline">可靠服务</span>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="eyebrow">Architecture comparison</div>
+          <h2>3 Tab / 4 Tab 对照</h2>
+          <div class="compare-grid">
+            <div class="compare-card" id="compare3">
+              <strong>A · 3 Tab</strong>
+              <p>首页 / 在小自然 / 我的</p>
+              <p>一级导航更少；住宿从首页进入。</p>
+              <button data-action="tabmode-3">切换到 A</button>
+            </div>
+            <div class="compare-card active" id="compare4">
+              <strong>B · 4 Tab</strong>
+              <p>首页 / 住宿 / 在小自然 / 我的</p>
+              <p>住宿一步可达；分类更直观。</p>
+              <button data-action="tabmode-4">切换到 B</button>
+            </div>
+          </div>
+          <p>
+            <b>当前建议：</b>优先测试
+            B，但不在本版冻结。对比首次找房、重复预订、住中找服务三条任务后再定案。
+          </p>
+        </section>
+        <section class="panel">
+          <div class="eyebrow">Implementation boundary</div>
+          <h2>微信小程序实现映射</h2>
+          <table class="matrix">
+            <thead>
+              <tr>
+                <th>设计项</th>
+                <th>实现判断</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大图 / 横向内容</td>
+                <td>前端可实现；真实摄影与授权待补。</td>
+              </tr>
+              <tr>
+                <td>3 / 4 Tab</td>
+                <td>均在常见原生 TabBar 数量范围内；实际页面配置待验证。</td>
+              </tr>
+              <tr>
+                <td>Service Dock / 弹层</td>
+                <td>可用自定义组件实现；固定位置与安全区需真机验证。</td>
+              </tr>
+              <tr>
+                <td>日期 / 房型 / 价格</td>
+                <td>界面可做；可订状态、价格、订单和支付依赖业务接口。</td>
+              </tr>
+              <tr>
+                <td>我的入住</td>
+                <td>前端可呈现；订单关联、权限与敏感信息须由真实业务决定。</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>HTML 通过不等于微信开发者工具或真机验收通过。当前未发现可用小程序源码与项目框架。</p>
+        </section>
+      </aside>
+    </main>
+    <footer class="footer">
+      <span>小自然 · Core Page Blueprint v0.2 · 结构验证用</span
+      ><span>外部摄影仅作视觉参考，不代表小自然实景；真实照片、Logo 与业务数据待接入。</span>
+    </footer>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 
 **版本：** `0.1.0`  
 **日期：** 2026-10-17  
-**测试范围：** 本地 HTTP 服务、桌面 Chromium、响应式视口、WebKit iPhone 仿真与发布后 HTTPS 地址（真实设备/微信客户端另列）。
+**测试范围：** 本地 HTTP 服务、桌面 Chromium、响应式视口、发布后 HTTPS 地址；WebKit 下载和实体设备状态另列。
 
 ## 本地浏览器检查
 
@@ -18,13 +18,23 @@
 - 桌面 Chromium 首次修复 favicon 404 后，页面加载控制台为 0 errors / 0 warnings。
 - 320×640、375×812、768×1024、1280×900 视口均未发现文档水平溢出。
 
+## 发布站点实测
+
+地址：<https://ryanguan20001010-star.github.io/xiaoziran-web-preview/>。GitHub Pages API 状态为 `built`，`https_enforced=true`。
+
+- HTTP 入口自动跳转到 HTTPS；线上主页、`styles.css`、`app.js` 与三张参考图片均返回 HTTP 200。
+- 桌面 Chromium 的六项核心资源请求均为 HTTP 200；首页三张图片解码成功，宽度为 1800、1400、1400 像素。
+- 控制台：0 errors / 0 warnings。
+- 320×640、375×812、768×1024、1280×900 四档视口均未发现页面水平溢出。
+- 七页导航、日期人数上限、有效日期反馈、设施展开、住中状态切换及演示提交提示在线上版本通过。
+- 首次 Pages 构建期间出现短暂 404；构建转为 `built` 后重新访问为 200。此记录不影响当前访问状态。
+
 ## iPhone / 微信验证边界
 
-- WebKit 的 iPhone 15 浏览器仿真用于检查 iPhone 尺寸下的布局和交互；它不等于实体 iPhone 上的 Safari 测试。
-- 微信客户端未在实体设备上运行；如对发布站点执行带 `MicroMessenger` 标记的浏览器仿真，仅作为 User-Agent/基础 WebKit 兼容检查，不代表微信内置浏览器真实访问通过。
-- 实体 iPhone Safari、微信扫码打开、微信内返回/分享/安全区表现：待实际设备验收。
+- Playwright WebKit / iPhone 15 仿真未能启动：安装 WebKit 时官方 CDN 连接中断（`server closed connection`）；因此没有 WebKit 引擎结果。
+- WeChat 桌面客户端没有作为移动内置浏览器测试；未用 User-Agent 模拟冒充微信验收。
+- iPhone Mirroring 当前提示手机正在使用且连接超时，要求先锁屏；实体 iPhone Safari、微信扫码打开、微信内返回/分享/安全区表现：待真机操作后验收。
 
 ## 线上 HTTPS 检查
 
-部署成功后补录最终地址、时间、HTTP 状态、HTTPS 重定向、页面标题、CSS/JS/图片资源状态与控制台结果。若无法实测，保留待验证并说明阻塞原因，不将托管平台的构建成功等同于可访问。
-
+桌面环境已完成上述线上检查。实体 iPhone 与微信客户端尚未实测；解锁设备配合镜像后，应补充记录实际打开、导航、返回、分享、安全区与资源加载结果。

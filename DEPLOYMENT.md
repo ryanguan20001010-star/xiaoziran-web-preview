@@ -4,11 +4,13 @@
 
 - **版本：** `0.1.0`
 - **托管方式：** GitHub Pages，静态 HTTPS 网站。
-- **预览地址：** `待完成部署后填写`
-- **部署仓库：** `待完成部署后填写`
-- **发布提交 / 标签：** `待完成部署后填写`
-- **部署状态：** `部署进行中；发布与访问检查完成后更新`
-- **最后验证：** `待线上检查`
+- **预览地址：** <https://ryanguan20001010-star.github.io/xiaoziran-web-preview/>
+- **部署仓库：** <https://github.com/ryanguan20001010-star/xiaoziran-web-preview>（公开仓库；仅含本目录的预览文件）
+- **发布分支 / 目录：** `main` / `/`
+- **版本标签：** `web-preview-v0.1.0`
+- **部署状态：** `built`；GitHub Pages 已启用 HTTPS 强制跳转。
+- **访问验证：** 2026-10-17；首页、CSS、JS 和三张 JPEG 均实测返回 HTTP 200，HTTP 入口跳转至 HTTPS。
+- **浏览器验证：** 桌面 Chromium 控制台 0 errors / 0 warnings；线上四档视口、七页导航和主要交互复测通过。实体 iPhone Safari 与真实微信客户端仍待设备验收，详见 [`QA_REPORT.md`](./QA_REPORT.md)。
 
 GitHub Pages 的发布源与公开仓库要求依托 GitHub 官方说明：[配置发布源](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)及 [Pages API](https://docs.github.com/en/rest/pages/pages?apiVersion=2022-11-28)。本预览只包含静态原型、其 CSS/JS、来源清单及三张摄影参考图，不包含项目访谈、历史截图或客户资料。托管仓库与页面为公开访问；网页使用 `noindex,nofollow` 元信息，供直接链接体验。
 
@@ -18,12 +20,12 @@ GitHub Pages 的发布源与公开仓库要求依托 GitHub 官方说明：[配�
 
 ## 已知问题与待验证项
 
-- 实体 iPhone Safari 与微信内置浏览器需要真实设备网络访问验收；浏览器仿真及 User-Agent 模拟不得视作真机通过。
+- Playwright WebKit 浏览器安装时，官方下载连接中断；本轮没有完成 iPhone WebKit 仿真。实体 iPhone Safari 与微信内置浏览器需要真实设备网络访问验收。
 - 微信内置浏览器的分享、返回、状态栏/安全区和外链规则尚未确认。
 - 3/4 Tab、服务可用性、真实房型/价格/政策及小自然实景素材仍未确认或冻结。
 - 无正式业务后端；输入日期只更新演示状态，不查询房态、费用或订单。
 
-实际部署、桌面/WebKit 和线上资源访问记录见 [`QA_REPORT.md`](./QA_REPORT.md)。
+实际部署、桌面浏览器和线上资源访问记录见 [`QA_REPORT.md`](./QA_REPORT.md)。
 
 ## 回滚
 
@@ -31,4 +33,3 @@ GitHub Pages 的发布源与公开仓库要求依托 GitHub 官方说明：[配�
 2. 后续版本若有问题，在 GitHub 仓库将 `main` 恢复到该标签对应提交，或提交反向修复，再等待 Pages 完成构建并重新验证 HTTPS 地址。
 3. 首次发布期间出现严重内容问题，可通过 GitHub Pages 设置禁用站点；恢复前确认要发布的提交和素材范围。
 4. 回滚后重新检查首页、CSS/JS、三张图片、页面交互和 HTTPS 跳转；不要只凭 Pages 构建状态判断恢复成功。
-

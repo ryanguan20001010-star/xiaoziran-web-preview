@@ -36,7 +36,4 @@ python3 -m http.server 4173 --bind 127.0.0.1 --directory prototype/web-preview
 
 ## 对应评审
 
-- [Web Preview Virtual Review](../../reviews/web_preview_prototype_review.md)
-- [Design Principles 页面检查清单](../../reviews/web_preview_prototype_design_checklist.md)
-- [来源蓝图 v0.2](../../XIAOZIRAN_CORE_PAGE_BLUEPRINT_V0_2/README.md)
-
+项目级评审记录位于 `reviews/web_preview_prototype_review.md` 和 `reviews/web_preview_prototype_design_checklist.md`；来源蓝图 v0.2 位于 `XIAOZIRAN_CORE_PAGE_BLUEPRINT_V0_2/README.md`。这些文件保留在完整项目目录中，不随静态网站发布。
